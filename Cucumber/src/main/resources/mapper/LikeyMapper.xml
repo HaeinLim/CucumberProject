@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.three.cucumber.service.dao.LikeyDAO">
+	
+	<select id="checkLike" resultType="_int">
+		select count(*) from likey where likeypost=#{likeyPost} and memid=#{memId}
+	</select>
+	
+	<insert id="insertLike">
+		insert into likey
+		values(#{likeyPost}, #{memId})
+	</insert>
+	
+	<delete id="deleteLike">
+		delete from likey
+		where likeypost=#{likeyPost} and memid=#{memId }
+	</delete>
+	
+	<update id="plLike">
+		update post set likey = likey+1 where postid = #{postid}
+	</update>
+	<update id="miLike">
+		update post set likey = likey-1 where postid = #{postid}
+	</update>
+	
+</mapper>

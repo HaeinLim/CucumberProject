@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.three.cucumber.service.dao.ReportPostDAO">
+	<insert id="reportInsertatPost">
+		insert into postreport values(postreportseq.nextval, #{postReportMem}, #{postId }, #{postReportContent })
+	</insert>
+	
+	<select id="allReportPost" resultType="reportPostVO">
+		select * from postreport where postid = #{postId}
+	</select>
+	
+	<select id="getEveryReportPost" resultType="reportPostVO">
+		select * from postreport order by postreportid desc
+	</select>
+	
+	<delete id="delRepPostByPost">
+		delete from postreport where postid=#{postId}
+	</delete>
+	
+	<delete id="delRepPost">
+		delete from postreport where postreportid = #{postReportId}
+	</delete>
+</mapper>

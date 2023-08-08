@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.three.cucumber.service.dao.ReportDAO">
+	<insert id="insertChatRep">
+		insert into chatreport values(chatreportseq.nextval, #{chatReported}, #{chatReporter}, #{chatReportPipath}, #{chatReportContent})
+	</insert>
+	<update id="updateMemRep">
+		update member set report = report+1 where memid=#{memId}
+	</update>
+	
+	<select id="getAllMem" resultType="memberVO">
+		select memid, email, nick, tel, mempoint, report from member
+	</select>
+	
+	<select id="getAllChatRep" resultType="chatRepVO">
+		select * from chatreport
+	</select>
+	
+	<delete id="delRepChat">
+		delete from chatreport where chatreportid=#{chatReportId}
+	</delete>
+	
+	<select id="getAllRevRep" resultType="revRepVO">
+		select * from revreport
+	</select>
+	
+	<delete id="delrevRep">
+		delete from revreport where revrepid=#{revRepId}
+	</delete>
+	
+	<select id="getQnaDepth" resultType="_int">
+		select depth from qna where qnaid=#{qnaId}
+	</select>
+	
+	<delete id="delQnaRep">
+		delete from qnareport where qnareportid=#{qnaReportId}
+	</delete>
+</mapper>

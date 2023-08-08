@@ -1,0 +1,58 @@
+@charset "EUC-KR";
+
+
+
+	.wrapper {
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  min-height: 100vh;
+	  box-shadow: 1px 1px 20px 1px #dadce0;
+	  
+	}
+	
+	.good{
+		
+		width : 500px;
+	
+	}
+
+	.img{
+		 width: 150px;
+		 align: center;
+    	
+	}
+
+	.mainImg{
+		width: 60pt;
+		height: 60pt;
+	}
+	.logImg{
+		width: 30pt;
+		height: 30pt;
+	}
+	.td{
+		width : 10%
+	}
+	.td2{
+		width: 80%;
+		color: white;
+		font-size: 150%;
+	}
+	.bar{
+		width : 100%;
+		text-align: center;
+	}
+	input[type="number"]::-webkit-outer-spin-button,
+	input[type="number"]::-webkit-inner-spin-button {
+	    -webkit-appearance: none;
+	    margin: 0;
+	}	
+
+
+
+
+
+
+
+

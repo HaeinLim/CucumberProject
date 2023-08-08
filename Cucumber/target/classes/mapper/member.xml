@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.three.cucumber.service.dao.MemberDAO">
+	<select id="getMemseq" resultType="_int">
+		select memseq.nextval from dual
+	</select>
+	<select id="nickCheck" resultType="_int">
+		select count(*) from member where nick = #{nick}
+	</select>
+	<select id="emailCheck" resultType="_int">
+		select count(*) from member where email = #{email}
+	</select>
+	<insert id="insertMem">
+		insert into member values(memseq.nextval,#{email},#{pw},#{pwSalt},#{nick},#{tel},0,0,#{admin})
+	</insert>
+	<select id="findEmail" resultType="string">
+		select email from member where tel = #{phone} 
+	</select>
+	<update id="updateMemPw">
+		update member set pw=#{pw}, pwsalt=#{pwSalt} where email=#{email}
+	</update>
+	<select id="login" resultType="memberVO">
+		select * from member where email = #{email} 
+	</select>
+	<update id="updateMem">
+		update member set tel=#{tel}, nick=#{nick} ,pw=#{pw}, pwsalt=#{pwSalt} where email=#{email}
+	</update>
+	<select id="findMem" resultType="memberVO">
+		select * from member where memid = #{memId} 
+	</select>
+	<update id="updateMemTel">
+		update member set tel=#{tel} where memid=#{memId}
+	</update>
+		<update id="updateMemNick">
+		update member set nick=#{nick} where memid=#{memId}
+	</update>
+	<delete id="deleteMem">
+		delete from member where memid=#{memId}
+	</delete>
+	<select id="findNick" resultType="String"> 
+		select nick from member where memid=#{memId} 
+	</select>
+</mapper>

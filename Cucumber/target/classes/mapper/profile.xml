@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.three.cucumber.service.dao.ProfileDAO">
+	<select id="getAllPostByLikey" resultType="postVO">
+		select * from post where postid in (select likeypost from likey where memid = #{userId})
+	</select>
+	
+	<select id="getAllPostByBuy" resultType="buyVO">
+		select * from buy where buyer = #{memId}
+	</select>
+	
+	<insert id="inRev">
+		insert into rev values(revseq.nextval, #{buyId}, #{revWriter}, #{revReceiver}, #{revContent}, #{revPoint})
+	</insert>
+	
+	<update id="upBuyRevCheck">
+		update buy set revchek = 1 where buyid= #{buyId}
+	</update>
+
+	<update id="upMemPoint">
+		update member set mempoint = #{param2} where memid=${param1}
+	</update>
+	
+	<select id="getAllRevByRec" resultType="revVO">
+		select * from rev where revreceiver = #{memId}
+	</select>
+	
+	<select id="getAllRevByWri" resultType="revVO">
+		select * from rev where revwriter = #{memId}
+	</select>
+	
+	<delete id="delBuyPost">
+		delete from buy where buyid=#{buyId}
+	</delete>
+	
+	<delete id="delRev">
+		delete from rev where revid=#{revId}
+	</delete>
+	
+	<select id="findRev" resultType="revVO">
+		select * from rev where revid=#{revId}
+	</select>
+	
+	<insert id="inRepRev">
+		insert into revreport values(revseq.nextval, #{revId}, #{revContent})
+	</insert>
+	
+	<update id="upBuyRevCheckByRev">
+		update buy set revchek = 1 where buyid = (select buyid from rev where revid=#{revId})
+	</update>
+	
+	<select id="findBuy" resultType="_int">
+		select count(*) from buy where buyid = (select buyid from rev where revid=#{revId})
+	</select>
+	
+	<select id="getAllMyPostNow" resultType="postVO">
+		select * from post where memid=#{memId} and (poststate = '판매중' or poststate = '거래중')
+	</select>
+	
+	<select id="getAllMyPostDone" resultType="postVO">
+		select * from post where memid=#{memId} and poststate = '거래완료'
+	</select>
+	
+	<select id="getAllMyPostHide" resultType="postVO">
+		select * from post where memid=#{memId} and poststate = '숨김'
+	</select>
+	
+</mapper>

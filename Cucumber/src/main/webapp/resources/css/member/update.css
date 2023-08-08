@@ -1,0 +1,30 @@
+@charset "EUC-KR";
+
+	#regpass, #checkpw{
+		font-size : x-small;
+		color: red;
+		text-align: center;
+	}
+	#email, #pw, #passwordCheck {
+		width : 60%;
+	}
+	#ncheck{
+		width : 80%
+	}
+	.subbtn{
+		text-align: center;
+	}
+	.wrapper {
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  min-height: 100vh;
+	  box-shadow: 1px 1px 20px 1px #dadce0;
+	}
+	body{
+		background-image: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4) ),url('../../img/cucumback.jpg');
+		background-size: cover;
+	}
+	#del{
+		font-size : x-small;
+	}

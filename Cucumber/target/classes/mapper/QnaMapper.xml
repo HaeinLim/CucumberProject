@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.three.cucumber.service.dao.QnaDAO">
+
+	<!-- 한 포스트의 문의 전체 조회 -->
+	<select id="findMainQna" resultType="qnaVO">
+		select * from qna where postid=#{postId} and depth=0 order by qnadate desc
+	</select>
+
+	<!-- 한 포스트의 문의 대댓글 전체 조회 -->
+	<select id="findReply" resultType="qnaVO">
+		select * from qna where depth=1 and bundleid=#{bundleId}
+	</select>
+
+	<!-- 문의 입력 -->
+	<insert id="insertQna">
+		insert into qna(qnaid, memid, postid, depth, bundleid, bundleorder, qnacontent)
+		values(qnaseq.nextval, #{memId}, #{postId}, #{depth}, qnaseq.currval, bundleseq.nextval, #{qnaContent})
+	</insert>
+	 
+	<!-- 문의에 대한 댓글 입력 -->
+	<insert id="insertReply">
+		insert into qna(qnaid, memid, postid, depth, bundleid, bundleorder, qnacontent)
+		values(qnaseq.nextval, #{memId}, #{postId}, #{depth}, #{bundleId}, bundleseq.nextval, #{qnaContent})
+	</insert>
+	
+	<select id="findMemId" resultType="qnaVO">
+		select * from qna where qnaid=#{qnaId}
+	</select>
+	
+	<delete id="delMainQna">
+		delete from qna where bundleid=#{qnaId}
+	</delete>
+	
+	<delete id="delSubQna">
+		delete from qna where qnaid=#{qnaId}
+	</delete>
+	
+	<select id="findContent" resultType="String">
+		select qnacontent from qna where qnaid=#{qnaId}
+	</select>
+	
+</mapper>

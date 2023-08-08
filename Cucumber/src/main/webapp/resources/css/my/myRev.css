@@ -1,0 +1,50 @@
+@charset "EUC-KR";
+	body {
+		background-color: #f0f8ff;
+	}
+	.wrapper {
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	}
+	.mainImg{
+		width: 60pt;
+		height: 60pt;
+	}
+	.logImg{
+		width: 30pt;
+		height: 30pt;
+	}
+	.td1{
+		width : 10%
+	}
+	.td2{
+		width: 80%;
+		color: white;
+		font-size: 150%;
+	}
+	.bar{
+		width : 100%;
+		text-align: center;
+	}
+	.updiv{
+		position: fixed; 
+		bottom: 30px; 
+		right: -100px;
+	}
+	.upimg{
+		width: 25%; 
+		height: 25%;
+	}
+	.no{
+		padding : 5%;
+		background-color: lightgray;
+		border-radius : 0.5rem;
+		text-align: center;
+		font-size: 170%;
+		color: #2f4f4f;
+	}
+	.face, .rev{
+		width: 8%;
+		height: 8%;	
+	}

@@ -1,0 +1,81 @@
+@charset "UTF-8";
+
+#profile {
+	border-bottom: 1px solid #dcdcdc;
+}
+
+#postImg {
+	text-align: center;
+}
+
+.sub {
+	color: gray;
+	font-size: 8pt;
+}
+
+#postT {
+	margin-top: 10px;
+	font-weight: bold;
+}
+
+.thumnail {
+	width: 400px;
+	height: 300px;
+}
+
+.goProfile:hover, .goProfile:visited, .goProfile:active, .goProfile:link {
+		text-decoration : none;
+		color : black;
+}
+
+.like {
+	text-align: center;
+}
+
+.l1 {
+	width: 30px;
+	height: 30px;
+	text-align: right;
+	filter: invert(34%) sepia(51%) saturate(1574%) hue-rotate(330deg)
+		brightness(103%) contrast(106%);
+}
+
+#content {
+	border-bottom: 1px solid #dcdcdc;
+}
+
+.imgcontent {
+	width: 300px;
+	height: 300px;
+}
+
+.br {
+	line-height: 50%;
+}
+
+#qna {
+	border-bottom: 1px solid #dcdcdc;
+}
+
+#qnask {
+	margin-top: 10px;
+}
+
+.nick {
+	color: gray;
+	font-size: 8pt;
+	display: inline-block;
+}
+
+.upre {
+	margin-top: 10px;
+}
+	.no{
+		width : 100%;
+		padding : 5%;
+		background-color: lightgray;
+		border-radius : 0.5rem;
+		text-align: center;
+		font-size: 170%;
+		color: #2f4f4f;
+	}

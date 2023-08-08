@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.three.cucumber.service.dao.ReportQnaDAO">
+	<insert id="reportInsertofQna">
+		insert into qnareport values(qnareportseq.nextval, #{qnaReportMem}, #{postId},  #{qnaId})
+	</insert>
+	
+	<select id="allReportQna" resultType="reportQnaVO">
+		select * from qnareport where qnaid=#{qnaId} and postid=#{postId}
+	</select>
+	
+	<select id="getEveryReportQna" resultType="reportQnaVO">
+		select * from qnareport order by qnareportid desc
+	</select>
+</mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<typeAliases>
+		<typeAlias alias="memberVO" type="com.three.cucumber.vo.MemberVO"/>
+		<typeAlias alias="postVO" type="com.three.cucumber.vo.PostVO"/>
+		<typeAlias alias="cateVO" type="com.three.cucumber.vo.CateVO"/>
+		<typeAlias alias="chatVO" type="com.three.cucumber.vo.ChatVO"/>
+		<typeAlias alias="msgVO" type="com.three.cucumber.vo.MsgVO"/>
+		<typeAlias alias="revVO" type="com.three.cucumber.vo.RevVO"/>
+		<typeAlias alias="chatRepVO" type="com.three.cucumber.vo.ChatReportVO"/>
+		<typeAlias alias="qnaVO" type="com.three.cucumber.vo.QnaVO"/>
+		<typeAlias alias="likeyVO" type="com.three.cucumber.vo.LikeyVO"/>
+		<typeAlias alias="reportPostVO" type="com.three.cucumber.vo.ReportPostVO"/>
+		<typeAlias alias="reportQnaVO" type="com.three.cucumber.vo.ReportQnaVO"/>
+		<typeAlias alias="revVO" type="com.three.cucumber.vo.RevVO"/>
+		<typeAlias alias="buyVO" type="com.three.cucumber.vo.BuyVO"/>
+		<typeAlias alias="revRepVO" type="com.three.cucumber.vo.RevReportVO"/>
+	</typeAliases>
+</configuration>

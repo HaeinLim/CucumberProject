@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.three.cucumber.service.dao.ChatDAO">
+	<select id="getAllChat" resultType="chatVO">
+		select * from chat where (chatto = #{memId} or chatfrom= #{memId}) and (status =0 or status!=#{memId})
+	</select> 
+	<select id="getAllChatId" resultType="_int">
+		select chatid from chat where (chatto = #{memId} or chatfrom= #{memId}) and (status =0 or status!=#{memId})
+	</select>
+	<select id="findLastMsg" resultType="string">
+		select distinct(first_value(msgcontent) over(order by msgdate desc)) as chatcontent from msg where chatid=#{chatId}
+	</select>
+	<select id="getMsgCount" resultType="_int">
+		select count(*) from msg where msgread = 1 and chatid=#{param1} and msgwriter != #{param2} and (status = 0 or status!=#{param2})
+	</select>
+	<select id="getAllPost" resultType="postVO">
+		select * from post where postid in (select postid from chat where (chatto = #{memId} or chatfrom= #{memId}) and (status =0 or status!=#{memId}))
+	</select>
+	<update id="updateMsgRead">
+		update msg set msgread = 0 where chatid=#{param1} and msgwriter != #{param2} 
+	</update>
+	<select id="getAllMsg" resultType="msgVO">
+		select * from msg where chatid=#{param1} and (status = 0 or status!=#{param2}) order by msgdate
+	</select>
+	<select id="findPost" resultType="postVO">
+		select * from post where postid=(select postid from chat where chatid=#{chatId})
+	</select>
+	<select id="findNick" resultType="memberVO">
+		select * from member where memid in (
+			select distinct(
+				case when chatto != #{param2} then chatto
+				else chatfrom
+				end) as memid 
+				from chat 
+				where (chatto = #{param2} or chatfrom = #{param2}) and chatid=#{param1}
+		)
+	</select>
+	<insert id="insertchatlog">
+		insert into chatlogin values(#{memId}, #{chatId})
+	</insert>
+	<delete id="deletechatlog">
+		delete from chatlogin where memid = #{memId} and chatid=#{chatId}
+	</delete>
+	<select id="findChatLogMe" resultType="_int">
+		select count(*) from chatlogin where memid = #{memId} and chatid=#{chatId}
+	</select>
+	<select id="findChatLogYou" resultType="_int">
+		select count(*) from chatlogin where memid != #{memId} and chatid=#{chatId}
+	</select>
+	<insert id="insertMsg">
+		insert into msg values(msgseq.nextval, #{chatId}, #{msgWriter}, #{msgContent}, sysdate, #{msgRead}, 0)
+	</insert>
+	<select id="getChatStatus" resultType="_int">
+		select status from chat where chatid=#{chatId}
+	</select>
+	<update id="upChatStauts">
+		update chat set status=${param2} where chatid=#{param1}
+	</update>
+	<update id="upMsgStauts">
+		update msg set status=${param2} where chatid=#{param1}
+	</update>
+	<delete id="delChat">
+		delete from chat where chatid=#{chatId}
+	</delete>
+	
+	<update id="upPostStatus">
+		update post set poststate = #{param2} where postid=#{param1}
+	</update>
+	
+	<select id="findChatId" resultType="_int">
+		select chatid from chat where postid = #{postId} and (chatto = #{chatTo} or chatfrom= #{chatFrom})
+	</select>
+	<insert id="insertchat">
+		insert into chat values(chatseq.nextval, #{postId}, #{chatTo}, #{chatFrom}, #{chatFrom})
+	</insert>
+	<select id="findChat" resultType="chatVO">
+		select * from chat where postid = #{param1} and  chatto = #{param2} and chatfrom= #{param3}
+	</select>
+	
+	<select id="findPostUser" resultType="_int">
+		select memid from post where postid=#{postId}
+	</select>
+	
+	<update id="upChatStatusBy0">
+		update chat set status = 0 where chatid=#{chatId}
+	</update>
+	
+	<insert id="inBuy">
+		insert into buy values(buyseq.nextval, #{buyer}, #{seller}, #{title}, #{price}, #{pipath}, 0)
+	</insert>
+	
+	<select id="findChatById" resultType="chatVO">
+		select * from chat where chatid=#{chatId}
+	</select>
+</mapper>

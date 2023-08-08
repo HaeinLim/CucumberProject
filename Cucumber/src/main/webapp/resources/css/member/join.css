@@ -1,0 +1,35 @@
+@charset "EUC-KR";
+
+	#regpass, #checkpw, #checknick, #emailnum, #pnum{
+		font-size : x-small;
+		color: red;
+	}
+	.top, .bottom{
+		height: 10%;
+	}
+	#echeck, #ncheck, #pcheck{
+		width : 60%;
+	}
+	
+	#regpass, #checkpw {
+		text-align: right;
+	}
+	.subbtn{
+		text-align: center;
+	}
+	.wrapper {
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  min-height: 100vh;
+	  box-shadow: 1px 1px 20px 1px #dadce0;
+	}
+	body{
+		background-image: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4) ),url('../../img/cucumback.jpg');
+		background-size: cover;
+	}
+	input[type="number"]::-webkit-outer-spin-button,
+	input[type="number"]::-webkit-inner-spin-button {
+	    -webkit-appearance: none;
+	    margin: 0;
+	}

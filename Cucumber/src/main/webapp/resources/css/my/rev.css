@@ -1,0 +1,39 @@
+@charset "EUC-KR";
+	body {
+		background-color: #f0f8ff;
+	}
+	.wrapper {
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	}
+		.mainImg{
+		width: 60pt;
+		height: 60pt;
+	}
+	.logImg{
+		width: 30pt;
+		height: 30pt;
+	}
+	.td1{
+		width : 10%
+	}
+	.td2{
+		width: 80%;
+		color: white;
+		font-size: 150%;
+	}
+	.bar{
+		width : 100%;
+		text-align: center;
+	}
+.face{
+	width: 7%;
+	height: 7%;	
+}
+.sub{
+	text-align: center;
+}
+.nick{
+	font-size: 120%;
+}

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.three.cucumber.service.dao.HomeDAO">
+
+	
+	<!-- <![CDATA[ ]]>는 < , >를 오류 없이 사용할 수 있도록 해주는 것 -->
+	
+	<!-- 게시글 전체조회, 기본 세팅은 최신순, 한 페이지에 10개의 글만 보여줌 -->
+	<select id="getAllPostMain" resultType="postVO">
+		 <![CDATA[	SELECT *
+		FROM (SELECT ROW_NUMBER() OVER(ORDER BY post.postdate desc) row_num
+				, post.*
+				FROM post
+				ORDER BY postdate desc)
+		where row_num <= #{pageNum}*10 and row_num > (#{pageNum}-1)*10
+		ORDER BY postdate desc
+		  ]]>
+	</select>
+	 
+	<!-- 게시글 인기순 전체 조회 --> 
+	<select id="getAllHotPost" resultType="postVO">
+		 <![CDATA[	SELECT *
+		FROM (SELECT ROW_NUMBER() OVER(ORDER BY post.postview desc) row_num
+				, post.*
+				FROM post
+				ORDER BY postview desc)
+		where row_num <= #{pageNum}*10 and row_num > (#{pageNum}-1)*10
+		ORDER BY postview desc
+		  ]]>
+	</select>
+	 
+	<!-- 게시글 카테고리, 검색어, 인기순 조회 -->
+	<select id="getPostWithCateSearchHot" resultType="postVO">
+		 <![CDATA[	SELECT *
+		FROM (SELECT ROW_NUMBER() OVER(ORDER BY post.postview desc) row_num
+				, post.*
+				FROM post
+				where cateid = #{cateId} and lower(posttitle) like '%' || lower(#{keyword}) || '%'
+				ORDER BY postview desc)
+		where row_num <= #{pageNum}*10 and row_num > (#{pageNum}-1)*10
+		ORDER BY postview desc
+		  ]]>
+	</select>
+	
+	<!-- 게시글 카테고리, 검색어, 최신순 조회 -->
+	<select id="getPostWithCateSearchNew" resultType="postVO">
+		 <![CDATA[	SELECT *
+		FROM (SELECT ROW_NUMBER() OVER(ORDER BY post.postdate desc) row_num
+				, post.*
+				FROM post
+				where cateid = #{cateId} and lower(posttitle) like '%' || lower(#{keyword}) || '%'
+				ORDER BY postdate desc)
+		where row_num <= #{pageNum}*10 and row_num > (#{pageNum}-1)*10
+		ORDER BY postdate desc
+		  ]]>
+	</select>
+	
+	<!-- 게시글 카테고리만으로 조회(기본은 최신순) -->
+	<select id="getPostWithCate" resultType="postVO">
+		 <![CDATA[	SELECT *
+		FROM (SELECT ROW_NUMBER() OVER(ORDER BY post.postdate desc) row_num
+				, post.*
+				FROM post
+				where cateid = #{cateId}
+				ORDER BY postdate desc)
+		where row_num <= #{pageNum}*10 and row_num > (#{pageNum}-1)*10
+		ORDER BY postdate desc
+		  ]]>
+	</select> 
+	
+	<!-- 게시글 카테고리와 인기순 조회 -->
+	<select id="getPostWithCateHot" resultType="postVO">
+		 <![CDATA[	SELECT *
+		FROM (SELECT ROW_NUMBER() OVER(ORDER BY post.postview desc) row_num
+				, post.*
+				FROM post
+				where cateid = #{cateId}
+				ORDER BY postview desc)
+		where row_num <= #{pageNum}*10 and row_num > (#{pageNum}-1)*10
+		ORDER BY postview desc
+		  ]]>
+	</select> 
+	
+	<!-- 게시글 검색어와 인기순으로 조회 -->
+	<select id="getPostWithKeywordHot" resultType="postVO">
+		 <![CDATA[	SELECT *
+		FROM (SELECT ROW_NUMBER() OVER(ORDER BY post.postview desc) row_num
+				, post.*
+				FROM post
+				where 	lower(posttitle) like '%' || lower(#{keyword}) || '%'
+				ORDER BY postview desc)
+		where row_num <= #{pageNum}*10 and row_num > (#{pageNum}-1)*10
+		ORDER BY postview desc
+		  ]]>
+	</select>
+	
+	<!-- 게시글 검색어로만 조회 -->
+	<select id="getPostWithKeyword" resultType="postVO">
+		 <![CDATA[	SELECT *
+		FROM (SELECT ROW_NUMBER() OVER(ORDER BY post.postdate desc) row_num
+				, post.*
+				FROM post
+				where 	lower(posttitle) like '%' || lower(#{keyword}) || '%'
+				ORDER BY postdate desc)
+		where row_num <= #{pageNum}*10 and row_num > (#{pageNum}-1)*10
+		ORDER BY postdate desc
+		  ]]>
+	</select>
+	
+	<!-- 카테고리 전체 조회 -->
+	<select id="getAllCate" resultType="cateVO">
+		select * from cate
+	</select>
+
+	<!-- 거래글 총 개수 -->
+	<select id="getTotal" resultType="_int">
+		select count(*) from post
+	</select>
+	
+	<!-- 게시글 카테고리, 검색어, 인기순 총 개수 -->
+	<select id="getCateSearchHotCnt" resultType="_int">
+		select count(*) from post
+		where cateid=#{cateId} and lower(posttitle) like '%' ||
+		lower(#{keyword}) || '%'
+		order by postview desc
+	</select>
+	
+	<!-- 게시글 카테고리, 검색어, 최신순 총 개수 -->
+	<select id="getCateSearchNewCnt" resultType="_int">
+		select count(*) from post
+		where cateid=#{cateId} and lower(posttitle) like '%' ||
+		lower(#{keyword}) || '%'
+		order by postdate desc
+	</select>
+	
+	<!-- 게시글 카테고리 및 최신/인기 개수 -->
+	<select id="getCateCnt" resultType="_int">
+		select count(*) from post
+		where cateid=#{cateId}
+	</select>
+	
+	<!-- 게시글 검색어와 인기순으로 조회 -->
+	<select id="getSearchHotCnt" resultType="_int">
+		select count(*) from post
+		where lower(posttitle) like '%' || lower(#{keyword}) || '%'
+		order by postview desc
+	</select>
+	
+	<!-- 검색어로만 조회 -->
+	<select id="getSearchCnt" resultType="_int">
+		select count(*) from post
+		where lower(posttitle) like '%' || lower(#{keyword}) || '%'
+		order by postdate desc 
+	</select>
+
+	<!-- 거래글 클릭시 조회수 증가 -->
+	<update id="viewCount">
+		update post
+		set postview = postview + 1
+		where postid =
+		#{postId}
+	</update>
+
+	<!-- 거래글 클릭시 상세내용 -->
+	<select id="detail" resultType="postVO">
+		select * from post where postid =
+		#{postId} 
+	</select>
+</mapper>

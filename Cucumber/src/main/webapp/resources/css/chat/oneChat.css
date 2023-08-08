@@ -1,0 +1,53 @@
+@charset "EUC-KR";
+	body{
+		background-color: #2f4f4f;
+	}
+	.wrapper {
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	}
+	#postImg{
+		width: 50pt;
+		height:50pt;
+	}
+	.otherMsg{
+		display:inline-block;
+		background-color : #f0f8ff;
+		border-radius : 0.5rem;
+		padding : 1%;
+		margin-top: 1%;
+		max-width : 60%;
+	}
+	.myMsg{
+		display:inline-block;
+		border-radius : 0.5rem;
+		padding : 1%;
+		margin-top: 3%;
+		max-width: 60%;
+		background-color: #9acd32;
+	}
+	.otherTime{
+		font-size: 2%;
+		color: gray;
+	}
+ 	.num{
+		color: green;
+	} 
+ 	.myTime{
+		font-size: 2%;
+		color: gray;
+	}
+ 	.my{
+		text-align: right;
+	}
+	.card{
+		height: 35rem;
+	}
+	.card-body{
+		overflow: auto;
+	}
+	#report{
+		width: 5%;
+		height:50%;
+	}

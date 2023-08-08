@@ -1,0 +1,14 @@
+@charset "EUC-KR";
+	body{
+		background-color: #2f4f4f;
+	}
+	.wrapper {
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  min-height: 100vh;
+	  box-shadow: 1px 1px 20px 1px #dadce0;
+	}
+	.sub{
+		text-align: center;
+	}
