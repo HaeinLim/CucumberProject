@@ -54,6 +54,19 @@
 
 ## 프로그램 화면
 
+  - 회원가입, 이메일 및 비밀번호 찾기
+
+<div align="center">
+  <table align="center">
+    <tr>
+      <th>회원가입</th><th>이메일 찾기</th><th>비밀번호 찾기</th>
+    </tr>
+    <tr>
+      
+    </tr>
+  </table>
+</div>
+
   - 메인 및 상세 페이지
 
 <div align="center">
