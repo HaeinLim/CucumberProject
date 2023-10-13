@@ -32,7 +32,7 @@
 	  				<thead>
 	    				<tr><th>관리자 메뉴</th></tr>
 	    			</thead>
-	  				<tbody class="table-group-divider">
+	  				<tbody class="table-group-divider"> <!-- 아래 페이지들로 이동 -->
 	   	 				<tr><td><a href="member.do" type="button">회원관리</a></td></tr>
 	   	 				<tr><td><a href="getEveryReportPost.do" type="button">게시물 관리</a></td></tr>
 	   	 				<tr><td><a href="getEveryReportQna.do" type="button">문의글 관리</a></td></tr>
