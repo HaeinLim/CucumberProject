@@ -15,7 +15,6 @@ public class QnaVO {
 	
 	public QnaVO() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public QnaVO(int qnaId, int memId, int postId, int depth, int bundleId, int bundleOrder, String qnaContent,
