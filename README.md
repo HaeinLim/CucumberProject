@@ -54,6 +54,43 @@
 
 ## 프로그램 화면
 
+  - 회원가입, 이메일 및 비밀번호 찾기
+
+<div align="center">
+  <table align="center">
+    <tr>
+      <th>회원가입</th><th>이메일 찾기</th><th>비밀번호 찾기</th>
+    </tr>
+    <tr>
+      <td>
+        <img src="https://github.com/HaeinLim/CucumberProject/assets/140698817/dafb0418-b771-40ce-a84c-251b47c7dc3c" width="400" height="200">
+      </td>
+      <td>
+        <img src="https://github.com/HaeinLim/CucumberProject/assets/140698817/12326b59-25fe-400f-beda-baec7428f9a3" width="400" height="200">
+      </td>
+      <td>
+        <img src="https://github.com/HaeinLim/CucumberProject/assets/140698817/9b078dc3-b3d4-4a22-91b7-1808c143dc7d" width="400" height="200">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        - 비회원일 경우 회원가입 진행<br>
+        - 모든 항목 필수 기입<br>
+        - 중복 확인, 인증 등 조건 만족시<br>
+          빨간 글씨 > 초록 글씨로 변경
+      </td>
+      <td>
+        - 회원가입 때 입력한 전화번호로<br>
+          인증받아 이메일 찾기 가능
+      </td>
+      <td>
+        - 회원가입 때 입력한 이메일로<br>
+          새로운 비밀번호 전송
+      </td>
+    </tr>
+  </table>
+</div>
+
   - 메인 및 상세 페이지
 
 <div align="center">
