@@ -18,7 +18,7 @@ public class QnaServiceImpl implements QnaService {
 	@Autowired
 	private QnaDAO qdao;
 	
-	@Resource(name="memberService")
+	@Resource(name="memberService") // 댓글, 대댓글 작성자의 닉네임을 찾기 위해 호출
 	private MemberService mSer;
 
 	
@@ -27,7 +27,7 @@ public class QnaServiceImpl implements QnaService {
 		// TODO Auto-generated method stub
 		ArrayList<QnaVO> qarray = qdao.findMainQna(postId);
 
-		for(int i=0; i<qarray.size(); i++) {
+		for(int i=0; i<qarray.size(); i++) { // 댓글 작성자의 닉네임을 찾음
 			String nick = mSer.findNick(qarray.get(i).getMemId());
 			qarray.get(i).setNick(nick);
 		}
@@ -39,7 +39,7 @@ public class QnaServiceImpl implements QnaService {
 		// TODO Auto-generated method stub
 		ArrayList<QnaVO> qarray = qdao.findReply(postId);
 
-		for(int i=0; i<qarray.size(); i++) {
+		for(int i=0; i<qarray.size(); i++) { // 대댓글 작성자의 닉네임을 찾음
 			String nick = mSer.findNick(qarray.get(i).getMemId());
 			qarray.get(i).setNick(nick);
 		}
