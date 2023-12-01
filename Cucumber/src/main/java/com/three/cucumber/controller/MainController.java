@@ -67,6 +67,7 @@ public class MainController {
 		return "home/main";
 	}
 
+	// 상세 페이지로 이동
 	// 쿠키 세팅하고 거래글 상세내용으로 들어가면 쿠키 없음 조회수 +1 증가
 	@RequestMapping("detail.do")
 	public String detail(@CookieValue(value = "view") String cookie, ReportQnaVO rqvo,HttpServletRequest request, HttpServletResponse response,
